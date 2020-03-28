@@ -42,15 +42,12 @@ table=tabulate(stats,headers=SHORT_HEADERS)
 
 
 #to print the entire database
-#print(table)
+print(table)
 
 
 country=[]
 for i in range(29,-1,-1):
     country.append(stats[i][0])
-death=[]
-for i in range(29,-1,-1):
-    death.append(stats[i][3])
 infected=[]
 for i in range(29,-1,-1):
     infected.append(stats[i][1])
@@ -60,9 +57,16 @@ plt.barh(country,infected,align='center', color='red')
 plt.xlabel('Number of Infected')
 plt.subplots_adjust(left=0.16,right=0.95,top=0.94)
 plt.show()
+stats=sorted(stats,key=operator.itemgetter(3),reverse=True)
+country=[]
+for i in range(29,-1,-1):
+    country.append(stats[i][0])
+death=[]
+for i in range(29,-1,-1):
+    death.append(stats[i][3])
 plt.subplot(1,1,1)
 plt.title('COVID-19 DEATH')
 plt.barh(country,death,align='center', color='red')
-plt.xlabel('Number of Infected')
+plt.xlabel('Number of Death')
 plt.subplots_adjust(left=0.16,right=0.95,top=0.94)
 plt.show()
